@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Attach to Go Remote",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "/workspace", // Path to your Go project in the container
+            "port": 2345,
+            "host": "127.0.0.1" // Or the IP of your Docker host if not local
+        }
+    ]
+}
