@@ -18,7 +18,20 @@ RUN go build -o encrypt .
 
 
 # # tells Docker that the container listens on specified network ports at runtime
-EXPOSE 2345
+#EXPOSE 2345
 
 # # command to be used to execute when the image is used to start a container
+#CMD ["dlv", "debug", "--headless", "--listen=:2345", "--api-version=2", "--log"]
+# Stage 2: Final image
+FROM alpine:latest
+
+WORKDIR /app
+
+# If your Go app needs certificates for HTTPS, copy them
+#COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+COPY --from=builder /workspace/encrypt .
+
+EXPOSE 2345 
+
 CMD ["dlv", "debug", "--headless", "--listen=:2345", "--api-version=2", "--log"]

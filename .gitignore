@@ -5,6 +5,7 @@
 *.dylib
 *.test
 .env
+*.tar
 # Output of the go coverage tool
 *.out
 
