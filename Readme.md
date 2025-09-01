@@ -8,8 +8,9 @@ export MASTER_KEY="32byteslongsecretkey1234567890!!"
 ## Usage 
 ```
 docker build -t encrypt:v1.0 .
-docker run encrypt:v1.0 encrypt encrypt <plaintext>
-docker run encrypt:v1.0 encrypt decrypt <ciphertext_base64>
+docker save -o encrypt_image.tar encrypt:v1.0
+docker run --rm --env-file=./.env encrypt:v1.0 ./encrypt encrypt <plaintext>
+docker run --rm --env-file=./.env encrypt:v1.0 ./encrypt decrypt <ciphertext_base64>
 ```
 
 ## Encrypt a password:

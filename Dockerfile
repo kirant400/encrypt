@@ -11,11 +11,11 @@ COPY . .
 # # download Go modules and dependencies
 RUN go mod download
 
+# # Build the app with optional configuration
+RUN go build -o encrypt .
+
 # # We copy go files into our /workspace directory
 
-
-# # Build the app with optional configuration
-RUN CGO_ENABLED=0 go build -gcflags "all=-N -l" -o /encrypt .
 
 # # tells Docker that the container listens on specified network ports at runtime
 EXPOSE 2345
